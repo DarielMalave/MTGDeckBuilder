@@ -52,11 +52,16 @@ html {
 }
 
 body {
-	background: linear-gradient(160deg, rgb(219, 51, 51) 50%, white 50%);
+	/* background: linear-gradient(180deg, rgb(219, 51, 51) 50%, white 50%); */
 	height: 100%;
+	font-family: 'Spline Sans', sans-serif;
 }
 
 /* =========== all styles for the navigation bar ============== */
+
+.container {
+	background: rgb(219, 51, 51);
+}
 
 #navbar {
     width: 90%;
@@ -74,6 +79,7 @@ body {
 	color: white;
 	padding: 5px;
 	font-size: 1rem;
+	border-radius: 8px;
 	transition: box-shadow 0.25s, transform 0.25s;
 }
 
@@ -94,12 +100,51 @@ body {
 
 #welcome {
 	width: 90%;
-	height: 600px;
+	height: 350px;
 	margin: 0 auto;
+	margin-top: 2rem;
 	display: flex;
+	justify-content: center;
 }
 
 .welcome_image {
 	width: 300px;
 	height: 300px;
+}
+
+.welcome_text {
+	font-size: 3rem;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.welcome_subtext {
+	font-size: 1.5rem;
+	margin-top: 1rem;
+}
+
+/* ============= all styles for the "About This Project" section ========== */
+
+#about {
+	width: 90%;
+	height: 400px;
+	margin: 0 auto;
+	margin-top: 2rem;
+	display: flex;
+}
+
+.about_image {
+	width: 300px;
+	height: 400px;
+}
+
+.about_header {
+	font-weight: bold;
+	font-size: 2.5rem;
+	margin-top: 1rem;
+}
+
+.about_text {
+	margin-top: 1rem;
 }
