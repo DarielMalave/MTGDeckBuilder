@@ -28,7 +28,7 @@ const pagination_bar = document.getElementById('pagination');
 
 let current_page = 1;
 let rows_per_page = 4;
-//let number_of_pages = Math.ceil(data_source.length / rows_per_page);
+let number_of_pages = Math.ceil(20 / rows_per_page);
 
 // items is data_source
 // wrapper is container that displays data
