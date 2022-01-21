@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php echo "hello" ?>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pok&eacute;mon Compendium</title>
-    <!-- Stylesheet referencing my custom styling -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Set up necessary to access Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans&display=swap" rel="stylesheet">
-    <!-- Set up necessary to access FontAwesome's assets -->
-    <script src="https://kit.fontawesome.com/d42f872671.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <div class="container">
-        <!-- Navigation bar markup -->
-        <nav id="navbar">
-            <div><button class="logo"><i class="fas fa-archive"></i> Pok&eacute;mon Compendium</button></div>
-            <div><button class="nav_button">Pok&eacute;mon Data <i class="fas fa-arrow-circle-down"></i></button></div>
-            <div><button class="nav_button"><i class="fas fa-search"></i> Search Pok&eacute;mon...</button></div>
-            <div>
-                <button class="nav_button">Sign Up</button>
-                <button class="nav_button">Log In</button>
-            </div>
-        </nav>
+<?php require_once('templates/header.php'); ?>
 
         <!-- Welcome section markup (picture + introduction titles) -->
         <section id="welcome">
@@ -78,10 +47,4 @@
         <div>Insert Pokemon's Official Twitter Timeline Here</div>
     </section>
 
-    <footer id="footer">
-        <div>Footer here</div>
-    </footer>
-
-</body>
-
-</html>
+<?php require_once("templates/footer.php"); ?>

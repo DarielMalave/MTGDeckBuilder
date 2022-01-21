@@ -6,3 +6,16 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+#card_container > * {
+    flex: 0 1 25%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0.5em;
+}
+
+/* #card_container > div {
+    display: flex;
+    justify-content: space-evenly;
+    
+} */

@@ -1,29 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <link rel="stylesheet" href="gallery_styles.css">
-</head>
-
-<?php
-$json = file_get_contents('crimson_vow.json');
-$obj = json_decode($json, TRUE);
+<?php 
+    require_once('templates/header.php');
+    require_once('functions.php');
+    $mysqli = db_iconnect("mtg");
+    $all_cards = array();
+    $query = "SELECT * FROM cards LIMIT 0, 4;";
+    $result = $mysqli->query($query) or die($mysqli->error);
+    $i = 0;
+    while($row = $result->fetch_assoc()) {
+        $all_cards[$i] = $row;
+        $i ++;
+    }
+    // echo "<pre>";
+    // print_r($all_cards);
+    // echo "</pre>";
+    // $js_array = json_encode($all_cards);
+    // echo "let all_cards = ". $js_array . ";\n";
 ?>
 
-<body>
-    <section id="card_container">
-    <?php
-        foreach($obj['cards'] as $key => $value) {
-        echo "<div>";
-        echo "<img src=" . $value['imageUrl'] . " alt='About picture here.'>";
-        echo "</div>";
-        }
-    ?>
-    </section>
-</body>
+<script>
+    $(document).ready(function() {
+        let cardCount = 0;
 
-</html>
+        $.ajax({
+            type: "POST",
+            url: "process.php",
+            data: {cardCountUpdated: cardCount},
+            success: function(response) {
+                let updated_data_source = JSON.parse(decodeURIComponent(response));
+                displayList(updated_data_source, data_container, rows_per_page, cardCount);
+            }
+        });
+
+        $("#updateButton").click(function(e) {
+            cardCount += 4;
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: {cardCountUpdated: cardCount},
+                success: function(response) {
+                    let updated_data_source = JSON.parse(decodeURIComponent(response));
+                    displayList(updated_data_source, data_container, rows_per_page, cardCount);
+                }
+            });
+        });
+    });
+
+    // window.addEventListener('load', (event) => {
+    //     console.log('page is fully loaded');
+    //     displayList(data_source, data_container, rows_per_page, 1);
+    // });
+</script>
+
+<section id="card_container"></section>
+<section id="pagination_bar"></section>
+
+<button id="updateButton">Show more!</button>
+
+<script>
+    let data_source = JSON.parse(
+        decodeURIComponent(
+            "<?=rawurlencode(json_encode($all_cards));?>"
+        )
+    );
+    //console.log(data_source);
+const data_container = document.getElementById('card_container');
+const pagination_bar = document.getElementById('pagination_bar');
+
+let current_page = 1;
+let rows_per_page = 4;
+
+function displayList(data_source, wrapper, rows_per_page, page) {
+  wrapper.innerHTML = "";
+  page --;
+
+  let start = rows_per_page * page;
+  let end = start + rows_per_page;
+  for (let i = 0; i < rows_per_page; i++) {
+    let card_element = document.createElement('div');
+    let card_image = document.createElement('img');
+    card_image.src = data_source[i]['imageUrl'];
+    card_element.appendChild(card_image);
+    wrapper.appendChild(card_element);
+  }
+}
+
+// inside AJAX call here?
+//displayList(data_source, data_container, rows_per_page, current_page);
+
+</script>
+
+<?php require_once('templates/footer.php'); ?>
