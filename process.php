@@ -1,10 +1,11 @@
 <?php
-include ("functions.php");
+include ("setup_db.php");
 
 $mysqli = db_iconnect("mtg");
 $all_cards = array();
 $cardUpdatedCount = $_POST['cardCountUpdated'];
-$query = "SELECT * FROM cards LIMIT $cardUpdatedCount, 4;";
+$rowsPerPage = $_POST['rowsPerPage'];
+$query = "SELECT * FROM cards LIMIT $cardUpdatedCount, $rowsPerPage;";
 $result = $mysqli->query($query) or die($mysqli->error);
 $i = 0;
 while($row = $result->fetch_assoc()) {

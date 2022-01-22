@@ -1,22 +1,40 @@
 <?php require_once('templates/header.php'); ?>
 
+<!-- https://stackoverflow.com/questions/5618925/convert-php-array-to-javascript/24884659#24884659 -->
+<!-- Helped me transfer PHP data to Javascript by turning PHP array into JSON file, then
+printing it so that Javascript can pick up JSON file and parse it further -->
+
 <script>
     $(document).ready(function() {
-        let page_display = document.getElementById('current_page_display');
-        let number_of_pages = Math.ceil(20 / rows_per_page);
+        // initialize HTML elements that will be involved in handling and displaying
+        // card information from Javascript
+        const page_display = document.getElementById('current_page_display');
+        const data_container = document.getElementById('card_container');
+        const pagination_bar = document.getElementById('pagination_bar');
+        // initialize variables that will be used in determining how many cards
+        // should be in a single page and how many total pages a search query
+        // will contain (rounded up to include leftover cards)
+        const rows_per_page = 4;
+        const number_of_pages = Math.ceil(20 / rows_per_page);
 
-        // default; load in first page of results
+        // default; load in first page of results as soon as page loads using
+        // AJAX
         $.ajax({
             type: "POST",
             url: "process.php",
-            data: {cardCountUpdated: 0},
+            data: {cardCountUpdated: 0, rowsPerPage: rows_per_page},
             success: function(response) {
                 let updated_data_source = JSON.parse(decodeURIComponent(response));
                 displayList(updated_data_source, data_container, rows_per_page, 0);
             }
         });
 
+        // When user clicks next button, trigger AJAX event that will have client
+        // send a POST request to receive card information of the next page in
+        // search query
         $("#next_button").click(function(e) {
+            // this is used to update the display that shows what current page
+            // user is in right now
             let current_page = document.getElementById('current_page_counter');
             if (0 <= current_page.value && current_page.value < number_of_pages) {
                 current_page.value ++;
@@ -30,15 +48,15 @@
             }
             
             e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "process.php",
-                    data: {cardCountUpdated: cardCount},
-                    success: function(response) {
-                        let updated_data_source = JSON.parse(decodeURIComponent(response));
-                        displayList(updated_data_source, data_container, rows_per_page, cardCount);
-                    }
-                });
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page},
+                success: function(response) {
+                    let updated_data_source = JSON.parse(decodeURIComponent(response));
+                    displayList(updated_data_source, data_container, rows_per_page, cardCount);
+                }
+            });
         });
 
         $("#previous_button").click(function(e) {
@@ -59,7 +77,7 @@
             $.ajax({
                 type: "POST",
                 url: "process.php",
-                data: {cardCountUpdated: cardCount},
+                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page},
                 success: function(response) {
                     let updated_data_source = JSON.parse(decodeURIComponent(response));
                     displayList(updated_data_source, data_container, rows_per_page, cardCount);
@@ -69,22 +87,22 @@
     });
 </script>
 
-<section id="card_container"></section>
-<section id="pagination_bar"></section>
-<input id="current_page_counter" type="hidden" value="1">
-<button id="current_page_display">1</button>
-<button id="next_button">Next Page</button>
-<button id="previous_button">Previous Page</button>
 
-<button id="updateButton">Show more!</button>
+
+<section id="card_container"></section>
+<section id="pagination_bar">
+    <button id="previous_button">Previous Page</button>
+    <button id="current_page_display">1</button>
+    <button id="next_button">Next Page</button>
+</section>
+
+<input id="current_page_counter" type="hidden" value="1">
+
+<!-- <button id="current_page_display">1</button>
+<button id="next_button">Next Page</button>
+<button id="previous_button">Previous Page</button> -->
 
 <script>
-    const data_container = document.getElementById('card_container');
-    const pagination_bar = document.getElementById('pagination_bar');
-
-    let current_page = 1;
-    let rows_per_page = 4;
-
     function displayList(data_source, wrapper, rows_per_page, page) {
         wrapper.innerHTML = "";
         for (let i = 0; i < rows_per_page; i++) {
