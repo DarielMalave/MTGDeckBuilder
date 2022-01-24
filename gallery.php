@@ -87,7 +87,18 @@ printing it so that Javascript can pick up JSON file and parse it further -->
     });
 </script>
 
+<div>
+    <h2>Search: +VOW +INSTANT</h2>
+    <h3>250 cards returned, 20 total pages</h3>
+</div>
 
+<div>
+    <span>Filter by:</span>
+    <button>Card Set</button>
+    <button>Colors</button>
+    <button>CMC</button>
+    <button>Card Type</button>
+</div>
 
 <section id="card_container"></section>
 <section id="pagination_bar">
