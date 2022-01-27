@@ -6,8 +6,17 @@ printing it so that Javascript can pick up JSON file and parse it further -->
 
 <script>
     $(document).ready(function() {
+        // use GET request to add filters to search results
+        <?php 
+        if (isset($_GET['set'])) {
+            $get_card_set = $_GET['set'];
+            echo "const card_set = \"$get_card_set\";";
+        }
+        ?>
+        //console.log(card_set);
+
         // initialize HTML elements that will be involved in handling and displaying
-        // card information from Javascript
+        // card information from Javascript DOM manipulation
         const page_display = document.getElementById('current_page_display');
         const data_container = document.getElementById('card_container');
         const pagination_bar = document.getElementById('pagination_bar');
@@ -15,14 +24,14 @@ printing it so that Javascript can pick up JSON file and parse it further -->
         // should be in a single page and how many total pages a search query
         // will contain (rounded up to include leftover cards)
         const rows_per_page = 4;
-        const number_of_pages = Math.ceil(20 / rows_per_page);
+        const number_of_pages = Math.ceil(40 / rows_per_page);
 
         // default; load in first page of results as soon as page loads using
         // AJAX
         $.ajax({
             type: "POST",
             url: "process.php",
-            data: {cardCountUpdated: 0, rowsPerPage: rows_per_page},
+            data: {cardCountUpdated: 0, rowsPerPage: rows_per_page, cardSet: card_set},
             success: function(response) {
                 let updated_data_source = JSON.parse(decodeURIComponent(response));
                 displayList(updated_data_source, data_container, rows_per_page, 0);
@@ -51,7 +60,7 @@ printing it so that Javascript can pick up JSON file and parse it further -->
             $.ajax({
                 type: "POST",
                 url: "process.php",
-                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page},
+                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page, cardSet: card_set},
                 success: function(response) {
                     let updated_data_source = JSON.parse(decodeURIComponent(response));
                     displayList(updated_data_source, data_container, rows_per_page, cardCount);
@@ -77,7 +86,7 @@ printing it so that Javascript can pick up JSON file and parse it further -->
             $.ajax({
                 type: "POST",
                 url: "process.php",
-                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page},
+                data: {cardCountUpdated: cardCount, rowsPerPage: rows_per_page, cardSet: card_set},
                 success: function(response) {
                     let updated_data_source = JSON.parse(decodeURIComponent(response));
                     displayList(updated_data_source, data_container, rows_per_page, cardCount);
