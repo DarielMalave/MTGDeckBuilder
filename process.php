@@ -8,20 +8,25 @@ $cardUpdatedCount = $_POST['cardCountUpdated'];
 $rowsPerPage = $_POST['rowsPerPage'];
 
 $query = structure_query($string_url);
-//WHERE card_set = '$cardSet' LIMIT $cardUpdatedCount, $rowsPerPage;
+
+// perform separate query to get total number of cards in a search
+// query before adding pagination limits
+//$result_num_rows = $mysqli->query($query) or die($mysqli->error);
+//$total_num_cards = mysqli_num_rows($result_num_rows);
 
 $query .= " LIMIT $cardUpdatedCount, $rowsPerPage;";
 
-// get length
 $result = $mysqli->query($query) or die($mysqli->error);
 $i = 0;
 while($row = $result->fetch_assoc()) {
     $all_cards[$i] = $row;
     $i ++;
 }
+//$all_cards[$i] = $total_num_cards;
 
 $updated_all_cards = rawurlencode(json_encode($all_cards));
 echo $updated_all_cards;
+//mysqli_close($mysqli);
 
 function structure_query($url) {
     // Instead of using $_GET variables, grabbing and parsing the URL
