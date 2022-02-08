@@ -103,9 +103,11 @@ printing it so that Javascript can pick up JSON file and parse it further -->
 <div class="dropdown">
   <button class="dropbtn">Card Set</button>
   <div class="dropdown-content">
-    <a href="<?php echo (strpos($_SERVER['REQUEST_URI'], "?") === false) ? "" . $_SERVER['REQUEST_URI'] . "?card_set=mid" : "" . $_SERVER['REQUEST_URI'] . "&card_set=mid"; ?>">Crimson Vow</a>
-    <a href="<?php echo $_SERVER['REQUEST_URI'] . "?card_set=mid"; ?>">Midnight Hunt</a>
-    <a href="#">Strixhaven</a>
+    <!-- not a fan of mixing JavaScript inside of HTML, but this is the easiest way 
+    to get value of these filter buttons that have the same id -->
+    <button id="set_filter" value="card_set=vow" onclick="toggle_filter(this.value)">Crimson Vow</button>
+    <button id="set_filter" value="card_set=mid" onclick="toggle_filter(this.value)">Midnight Hunt</button>
+    <button id="set_filter" value="card_set=strix" onclick="toggle_filter(this.value)">Strixhaven</button>
   </div>
 </div>
 
@@ -140,6 +142,25 @@ printing it so that Javascript can pick up JSON file and parse it further -->
             card_image.src = data_source[i]['imageUrl'];
             card_element.appendChild(card_image);
             wrapper.appendChild(card_element);
+        }
+    }
+
+    function toggle_filter(filter) {
+        //console.log(filter);
+        let string_url = window.location.href;
+        //let updated_string_url = string_url;
+
+        if (string_url.indexOf(filter) > -1) {
+            console.log("URL does include filter");
+            let updated_string_url = string_url.replace(filter, "");
+            console.log(updated_string_url);
+        }
+        else {
+            //console.log("URL does NOT include filter");
+            let updated_string_url = string_url.concat("&" + filter);
+            //updated_string_url += "&" + filter;
+            console.log(updated_string_url);
+            //window.location.assign(updated_string_url);
         }
     }
 </script>
