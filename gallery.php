@@ -7,7 +7,9 @@ printing it so that Javascript can pick up JSON file and parse it further -->
 <script>
     $(document).ready(function() {
         // use GET request to add filters to search results
-        <?php echo "const current_url = \"" . $_SERVER['REQUEST_URI'] . "\";"; ?>
+        // use JavaScript window.location.href instead of PHP
+        <?php //echo "const current_url = \"" . $_SERVER['REQUEST_URI'] . "\";"; ?>
+        let current_url = window.location.href;
 
         // initialize HTML elements that will be involved in handling and displaying
         // card information from Javascript DOM manipulation
