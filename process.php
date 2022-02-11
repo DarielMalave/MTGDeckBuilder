@@ -1,6 +1,9 @@
 <?php
 include ("setup_db.php");
 
+// search cards based on:
+// manaCost, cmc, type, rarity, card_set
+
 $mysqli = db_iconnect("mtg");
 $all_cards = array();
 $string_url = $_POST['string_url'];
@@ -18,6 +21,7 @@ $query = structure_query($string_url);
 $query .= " LIMIT $cardUpdatedCount, $rowsPerPage;";
 
 $result = $mysqli->query($query) or die($mysqli->error);
+
 $i = 0;
 while($row = $result->fetch_assoc()) {
     $all_cards[$i] = $row;
@@ -27,9 +31,16 @@ while($row = $result->fetch_assoc()) {
 
 $updated_all_cards = rawurlencode(json_encode($all_cards));
 echo $updated_all_cards;
+
+//$updated_all_cards = rawurlencode(json_encode($all_cards));
+//echo $updated_all_cards;
 //mysqli_close($mysqli);
 
 function structure_query($url) {
+    // some filters can't easily be search by "filter = value", these
+    // filters have to be searched by something like "filter LIKE '%value%'"
+    $special_filters = array('manaCost', 'type');
+
     // Instead of using $_GET variables, grabbing and parsing the URL
     // will be used in order manipulate/organize filters
     // For example: if a user wants to search for cards from VOW and MID,
@@ -81,10 +92,10 @@ function structure_query($url) {
         
         // if not first element and this filter has same type as previous filter
         if (strcmp($create_filter[0], $previous_filter_type) == 0) {
-    	    $all_filters[] = "OR $create_filter[0] = '$create_filter[1]'";
+    	    $all_filters[] = (in_array($create_filter[0], $special_filters)) ? "OR $create_filter[0] LIKE '%$create_filter[1]%'" : "OR $create_filter[0] = '$create_filter[1]'";
         }
         else {
-		    $all_filters[] = ") AND ($create_filter[0] = '$create_filter[1]'";
+		    $all_filters[] = (in_array($create_filter[0], $special_filters)) ? ") AND ($create_filter[0] LIKE '%$create_filter[1]%'" : ") AND ($create_filter[0] = '$create_filter[1]'";
         }
     }
 

@@ -6,9 +6,6 @@ printing it so that Javascript can pick up JSON file and parse it further -->
 
 <script>
     $(document).ready(function() {
-        // use GET request to add filters to search results
-        // use JavaScript window.location.href instead of PHP
-        <?php //echo "const current_url = \"" . $_SERVER['REQUEST_URI'] . "\";"; ?>
         let current_url = window.location.href;
 
         // initialize HTML elements that will be involved in handling and displaying
@@ -29,9 +26,13 @@ printing it so that Javascript can pick up JSON file and parse it further -->
             url: "process.php",
             data: {cardCountUpdated: 0, rowsPerPage: rows_per_page, string_url: current_url},
             success: function(response) {
-                let updated_data_source = JSON.parse(decodeURIComponent(response));
-                displayList(updated_data_source, data_container, rows_per_page, 0);
-                //document.getElementById('number_of_pages_counter').value = Math.ceil(updated_data_source[updated_data_source.length - 1] / rows_per_page);
+                if (typeof(response) === 'string') {
+                    displayList(response, data_container, rows_per_page, 0);
+                }
+                
+                if (typeof(JSON.parse(decodeURIComponent(response))) === 'object') {
+                    displayList(JSON.parse(decodeURIComponent(response)), data_container, rows_per_page, 0);
+                }
             }
         });
 
@@ -138,6 +139,14 @@ printing it so that Javascript can pick up JSON file and parse it further -->
 <script>
     function displayList(data_source, wrapper, rows_per_page, page) {
         wrapper.innerHTML = "";
+
+        if (typeof(data_source) !== 'object') {
+            let error_element = document.createElement('p');
+            error_element.innerText = "No results returned. Please check if query is valid.";
+            wrapper.appendChild(error_element);
+            return;
+        }
+
         for (let i = 0; i < rows_per_page; i++) {
             let card_element = document.createElement('div');
             let card_image = document.createElement('img');
