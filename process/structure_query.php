@@ -44,7 +44,9 @@ function structure_query($url) {
     foreach ($pair_of_filters as $index => $filter) {
 	    $create_filter = explode("=", $filter);
         if ($index == 0) {
-    	    $all_filters[] = "($create_filter[0] = '$create_filter[1]'";
+            // change this in case if first filter is a special filter
+    	    //$all_filters[] = "($create_filter[0] = '$create_filter[1]'";
+            $all_filters[] = (in_array($create_filter[0], $special_filters)) ? "($create_filter[0] LIKE '%$create_filter[1]%'" : "($create_filter[0] = '$create_filter[1]'";
             continue;
         }
     
