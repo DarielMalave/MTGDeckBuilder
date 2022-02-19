@@ -27,7 +27,7 @@
     <div class="container">
         <!-- Navigation bar markup -->
         <nav id="navbar">
-            <div><button class="logo"><i class="fas fa-archive"></i> MTG Deck Builder</button></div>
+            <div><button class="logo"><i class="fas fa-book"></i> MTG Deck Builder</button></div>
             <div><button class="nav_button">Card Data <i class="fas fa-arrow-circle-down"></i></button></div>
             <div><button class="nav_button"><i class="fas fa-search"></i> Search cards...</button></div>
             <div>

@@ -60,7 +60,7 @@ body {
 /* =========== all styles for the navigation bar ============== */
 
 .container {
-	background: rgb(219, 51, 51);
+	background: rgb(20, 20, 20);
 }
 
 #navbar {
@@ -169,11 +169,8 @@ body {
 	width: 200px;
 }
 
-/* =============== Twitter Timeline styles =============== */
-
-
 /* ================= styles for footer ================== */
 
 #footer {
-	background:rgb(219, 203, 203)
+	background:rgb(225, 225, 225);
 }

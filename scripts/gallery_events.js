@@ -7,6 +7,8 @@ const page_display = document.getElementById('current_page_display');
 const data_container = document.getElementById('card_container');
 const pagination_bar = document.getElementById('pagination_bar');
 const current_page = document.getElementById('current_page_counter');
+const display_card_info = document.getElementById('display_card_info');
+const display_filters = document.getElementById('display_filters');
 // initialize variables that will be used in determining how many cards
 // should be in a single page and how many total pages a search query
 // will contain (rounded up to include leftover cards)
@@ -31,6 +33,37 @@ $.ajax({
         // if response is a proper JSON object that can be displayed
         if (typeof(JSON.parse(decodeURIComponent(response))) === 'object') {
             displayList(JSON.parse(decodeURIComponent(response)), data_container, rows_per_page, 0);
+        }
+    }
+});
+
+// default; another ajax call to get search page information
+$.ajax({
+    type: "POST",
+    url: "process_num_pages.php",
+    data: {
+        cardCountUpdated: 0,
+        rowsPerPage: rows_per_page,
+        string_url: current_url
+    },
+    success: function(response) {
+        const real_response = JSON.parse(decodeURIComponent(response));
+
+        display_card_info.innerText = "Total number of cards: " + real_response[0] + ", total number of pages: " + Math.ceil(real_response[0] / rows_per_page);
+
+        //console.log(real_response[1]);
+        //console.log(real_response[1].length);
+        if (real_response[1] === null) {
+            display_filters.innerText = "Search: +ALL CARDS (default)";
+        }
+        else {
+            let display_card_text = "";
+
+            real_response[1].forEach(function (item, index) {
+                display_card_text += "+" + item + " ";
+            });
+
+            display_filters.innerText = "Search: " + display_card_text.toUpperCase();
         }
     }
 });

@@ -22,6 +22,7 @@ function structure_query($url) {
 
     // Get individual filters from splitting the array based on &
     $pair_of_filters = explode("&", $filter_params);
+    
     // If there are no filters in the URL, the default query is going to
     // return all cards from all sets
     if (empty($filter_params) || empty(strpos($string_url, "?"))) {
@@ -44,8 +45,6 @@ function structure_query($url) {
     foreach ($pair_of_filters as $index => $filter) {
 	    $create_filter = explode("=", $filter);
         if ($index == 0) {
-            // change this in case if first filter is a special filter
-    	    //$all_filters[] = "($create_filter[0] = '$create_filter[1]'";
             $all_filters[] = (in_array($create_filter[0], $special_filters)) ? "($create_filter[0] LIKE '%$create_filter[1]%'" : "($create_filter[0] = '$create_filter[1]'";
             continue;
         }
