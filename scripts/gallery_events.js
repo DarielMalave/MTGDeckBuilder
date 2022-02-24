@@ -12,7 +12,7 @@ const display_filters = document.getElementById('display_filters');
 // initialize variables that will be used in determining how many cards
 // should be in a single page and how many total pages a search query
 // will contain (rounded up to include leftover cards)
-const rows_per_page = 4;
+const rows_per_page = 20;
 
 // default; load in first page of results as soon as page loads using AJAX
 $.ajax({

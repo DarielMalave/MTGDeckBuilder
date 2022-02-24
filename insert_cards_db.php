@@ -9,7 +9,7 @@ $mysqli = db_iconnect("mtg");
 //$rowForCID = $fetchCID->fetch_assoc();
 //$lastCID = $rowForCID['CID'];
 
-$all_cards = json_decode(file_get_contents("card_information/midnight_hunt.json"), true);
+$all_cards = json_decode(file_get_contents("card_information/crimson_vow.json"), true);
 // echo "<pre>";
 // print_r($all_cards['cards']);
 // echo "</pre>";
@@ -33,24 +33,23 @@ $all_cards = json_decode(file_get_contents("card_information/midnight_hunt.json"
 //     echo "<br>";
 // }
 
-// name, mana cost, cmc, imageUrl, type, types, rarity, set, text, flavor, artist, multiverseid, id
-// foreach ($all_cards['cards'] as $card) {
-//     $insert_name = $mysqli->real_escape_string($card['name']);
-//     $insert_mana_cost = $mysqli->real_escape_string($card['manaCost']);
-//     $insert_cmc = $mysqli->real_escape_string($card['cmc']);
-//     $insert_image_url = $mysqli->real_escape_string($card['imageUrl']);
-//     $insert_type = $mysqli->real_escape_string($card['type']);
-//     $insert_types = serialize($card['types']);
-//     $insert_rarity = $mysqli->real_escape_string($card['rarity']);
-//     $insert_card_set = $mysqli->real_escape_string($card['set']);
-//     $insert_text = $mysqli->real_escape_string($card['text']);
-//     $insert_flavor = $mysqli->real_escape_string($card['flavor']);
-//     $insert_artist = $mysqli->real_escape_string($card['artist']);
-//     $insert_multiverseid = $mysqli->real_escape_string($card['multiverseid']);
-//     $insert_id = $mysqli->real_escape_string($card['id']);
-//     $query = "INSERT INTO cards (name, manaCost, cmc, imageUrl, type, types, rarity, card_set, text, flavor, artist, multiverseid, id) VALUES('$insert_name', '$insert_mana_cost', '$insert_cmc', '$insert_image_url', '$insert_type', '$insert_types', '$insert_rarity', '$insert_card_set', '$insert_text', '$insert_flavor', '$insert_artist', '$insert_multiverseid', '$insert_id');";
-//     $mysqli->query($query) or die($mysqli->error);
-// }
+// name, mana cost, cmc, imageUrl, type, rarity, set, text, flavor, artist, multiverseid, id
+foreach ($all_cards['cards'] as $card) {
+    $insert_name = $mysqli->real_escape_string($card['name']);
+    $insert_mana_cost = $mysqli->real_escape_string($card['manaCost']);
+    $insert_cmc = $mysqli->real_escape_string($card['cmc']);
+    $insert_image_url = $mysqli->real_escape_string($card['imageUrl']);
+    $insert_type = $mysqli->real_escape_string($card['type']);
+    $insert_rarity = $mysqli->real_escape_string($card['rarity']);
+    $insert_card_set = $mysqli->real_escape_string($card['set']);
+    $insert_text = $mysqli->real_escape_string($card['text']);
+    $insert_flavor = $mysqli->real_escape_string($card['flavor']);
+    $insert_artist = $mysqli->real_escape_string($card['artist']);
+    $insert_multiverseid = $mysqli->real_escape_string($card['multiverseid']);
+    $insert_id = $mysqli->real_escape_string($card['id']);
+    $query = "INSERT INTO cards (name, manaCost, cmc, imageUrl, type, rarity, card_set, text, flavor, artist, multiverseid, id) VALUES('$insert_name', '$insert_mana_cost', '$insert_cmc', '$insert_image_url', '$insert_type', '$insert_rarity', '$insert_card_set', '$insert_text', '$insert_flavor', '$insert_artist', '$insert_multiverseid', '$insert_id');";
+    $mysqli->query($query) or die($mysqli->error);
+}
 
 
 // $query_test = "SELECT types FROM cards;";

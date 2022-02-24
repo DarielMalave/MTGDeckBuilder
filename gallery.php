@@ -14,7 +14,7 @@
         <button class="dropbtn">Card Set</button>
         <div class="dropdown-content">
             <!-- not a fan of mixing JavaScript inside of HTML, but this is the easiest way 
-            to get value of these filter buttons that have the same id -->
+            to get individual value of these filter buttons that have the same id -->
             <button id="set_filter" value="card_set=vow" onclick="toggle_filter(this.value)">Crimson Vow</button>
             <button id="set_filter" value="card_set=mid" onclick="toggle_filter(this.value)">Midnight Hunt</button>
             <button id="set_filter" value="card_set=strix" onclick="toggle_filter(this.value)">Strixhaven</button>
@@ -24,11 +24,13 @@
     <div class="dropdown">
         <button class="dropbtn">CMC</button>
         <div class="dropdown-content">
-            <!-- not a fan of mixing JavaScript inside of HTML, but this is the easiest way 
-            to get value of these filter buttons that have the same id -->
             <button id="set_filter" value="cmc=1" onclick="toggle_filter(this.value)">1</button>
             <button id="set_filter" value="cmc=2" onclick="toggle_filter(this.value)">2</button>
             <button id="set_filter" value="cmc=3" onclick="toggle_filter(this.value)">3</button>
+            <button id="set_filter" value="cmc=4" onclick="toggle_filter(this.value)">4</button>
+            <button id="set_filter" value="cmc=5" onclick="toggle_filter(this.value)">5</button>
+            <button id="set_filter" value="cmc=6" onclick="toggle_filter(this.value)">6</button>
+            <button id="set_filter" value="cmc=7" onclick="toggle_filter(this.value)">7</button>
         </div>
     </div>
 </div>
