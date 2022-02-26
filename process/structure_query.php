@@ -53,6 +53,7 @@ function structure_query($url) {
         $previous_filter_type = trim($previous_filter_type, "AND ");
         $previous_filter_type = trim($previous_filter_type, "OR ");
         $previous_filter_type = trim($previous_filter_type, "(");
+        $previous_filter_type = trim($previous_filter_type, ") AND (");
         $previous_filter_type = substr($previous_filter_type, 0, strlen($create_filter[0]));
         
         // if not first element and this filter has same type as previous filter

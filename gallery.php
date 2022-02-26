@@ -33,6 +33,46 @@
             <button id="set_filter" value="cmc=7" onclick="toggle_filter(this.value)">7</button>
         </div>
     </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Color Identity</button>
+        <div class="dropdown-content">
+            <button id="set_filter" value="manaCost={R}" onclick="toggle_filter(this.value)">Red</button>
+            <button id="set_filter" value="manaCost={U}" onclick="toggle_filter(this.value)">Blue</button>
+            <button id="set_filter" value="manaCost={G}" onclick="toggle_filter(this.value)">Green</button>
+            <button id="set_filter" value="manaCost={W}" onclick="toggle_filter(this.value)">White</button>
+            <button id="set_filter" value="manaCost={B}" onclick="toggle_filter(this.value)">Black</button>
+        </div>
+    </div>
+    
+    <!-- instant, creature, artifact, enchantment, planeswalker, land, saga?, dungeon? -->
+
+    <div class="dropdown">
+        <button class="dropbtn">Type</button>
+        <div class="dropdown-content">
+            <button id="set_filter" value="type=creature" onclick="toggle_filter(this.value)">Creature</button>
+            <button id="set_filter" value="type=instant" onclick="toggle_filter(this.value)">Instant</button>
+            <button id="set_filter" value="type=artifact" onclick="toggle_filter(this.value)">Artifact</button>
+            <button id="set_filter" value="type=enchantment" onclick="toggle_filter(this.value)">Enchantment</button>
+            <button id="set_filter" value="type=sorcery" onclick="toggle_filter(this.value)">Sorcery</button>
+            <button id="set_filter" value="type=planeswalker" onclick="toggle_filter(this.value)">Planeswalker</button>
+            <button id="set_filter" value="type=land" onclick="toggle_filter(this.value)">Land</button>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Rarity</button>
+        <div class="dropdown-content">
+            <button id="set_filter" value="rarity=common" onclick="toggle_filter(this.value)">Common</button>
+            <button id="set_filter" value="rarity=uncommon" onclick="toggle_filter(this.value)">Uncommon</button>
+            <button id="set_filter" value="rarity=rare" onclick="toggle_filter(this.value)">Rare</button>
+            <button id="set_filter" value="rarity=mythic" onclick="toggle_filter(this.value)">Mythic</button>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" onclick="window.location.assign('http://localhost/PokemonCompendium/gallery.php');">Reset</button>
+    </div>
 </div>
 
 

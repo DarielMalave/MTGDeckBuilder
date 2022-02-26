@@ -33,6 +33,7 @@ $all_cards = json_decode(file_get_contents("card_information/crimson_vow.json"),
 //     echo "<br>";
 // }
 
+// instant, creature, artifact, enchantment, planeswalker, land, saga?, dungeon?
 // name, mana cost, cmc, imageUrl, type, rarity, set, text, flavor, artist, multiverseid, id
 foreach ($all_cards['cards'] as $card) {
     $insert_name = $mysqli->real_escape_string($card['name']);
