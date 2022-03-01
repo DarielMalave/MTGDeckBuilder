@@ -17,6 +17,12 @@ function displayList(data_source, wrapper, rows_per_page, page) {
     for (let i = 0; i < rows_per_page; i++) {
         let card_element = document.createElement('div');
         let card_image = document.createElement('img');
+        //card_image.classList.add("lazy");
+        //card_image.datasrc = data_source[i]['imageUrl'];
+        //card_image.setAttribute("class", "data-src");
+        //card_image.setAttribute("data-src", data_source[i]['imageUrl']); 
+        //card_image.data-src = data_source[i]['imageUrl'];
+        //card_image.loading = "lazy";
         card_image.src = data_source[i]['imageUrl'];
         card_element.appendChild(card_image);
         wrapper.appendChild(card_element);

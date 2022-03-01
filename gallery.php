@@ -1,9 +1,7 @@
 <?php require_once('templates/header.php'); ?>
 
-
-
 <div id="display_search_info">
-    <h1>  Welcome to the Gallery! </h1>
+    <h1> Welcome to the Gallery! </h1>
     <h2 id="display_filters"></h2>
     <h3 id="display_card_info"></h3>
 </div>
@@ -17,7 +15,12 @@
             to get individual value of these filter buttons that have the same id -->
             <button id="set_filter" value="card_set=vow" onclick="toggle_filter(this.value)">Crimson Vow</button>
             <button id="set_filter" value="card_set=mid" onclick="toggle_filter(this.value)">Midnight Hunt</button>
-            <button id="set_filter" value="card_set=strix" onclick="toggle_filter(this.value)">Strixhaven</button>
+            <button id="set_filter" value="card_set=afr" onclick="toggle_filter(this.value)">Adventures in the Forgotten
+                Realms</button>
+            <button id="set_filter" value="card_set=stx" onclick="toggle_filter(this.value)">Strixhaven: School of
+                Mages</button>
+            <button id="set_filter" value="card_set=khm" onclick="toggle_filter(this.value)">Kaldheim</button>
+            <button id="set_filter" value="card_set=znr" onclick="toggle_filter(this.value)">Zendikar Rising</button>
         </div>
     </div>
 
@@ -44,7 +47,7 @@
             <button id="set_filter" value="manaCost={B}" onclick="toggle_filter(this.value)">Black</button>
         </div>
     </div>
-    
+
     <!-- instant, creature, artifact, enchantment, planeswalker, land, saga?, dungeon? -->
 
     <div class="dropdown">
@@ -71,12 +74,10 @@
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn" onclick="window.location.assign('http://localhost/PokemonCompendium/gallery.php');">Reset</button>
+        <button class="dropbtn"
+            onclick="window.location.assign('http://localhost/PokemonCompendium/gallery.php');">Reset</button>
     </div>
 </div>
-
-
-    
 
 
 <section id="card_container"></section>

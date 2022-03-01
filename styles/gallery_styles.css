@@ -100,3 +100,14 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* Edit cards inside card container */
+
+#card_container img {
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+#card_container img:hover {
+  box-shadow: 8px 8px 5px #888888;
+	transform: translateY(-0.3em);
+}
