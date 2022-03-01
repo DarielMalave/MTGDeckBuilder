@@ -14,6 +14,9 @@ const display_filters = document.getElementById('display_filters');
 // will contain (rounded up to include leftover cards)
 const rows_per_page = 20;
 
+// hold information for 20 cards in current page for modals
+let data_source;
+
 // default; load in first page of results as soon as page loads using AJAX
 $.ajax({
     type: "POST",
@@ -34,6 +37,8 @@ $.ajax({
         if (typeof(JSON.parse(decodeURIComponent(response))) === 'object') {
             displayList(JSON.parse(decodeURIComponent(response)), data_container, rows_per_page, 0);
         }
+
+        data_source = JSON.parse(decodeURIComponent(response));
     }
 });
 
@@ -51,8 +56,6 @@ $.ajax({
 
         display_card_info.innerText = "Total number of cards: " + real_response[0] + ", total number of pages: " + Math.ceil(real_response[0] / rows_per_page);
 
-        //console.log(real_response[1]);
-        //console.log(real_response[1].length);
         if (real_response[1] === null) {
             display_filters.innerText = "Search: +ALL CARDS (default)";
         }
@@ -88,7 +91,6 @@ $("#next_button").click(function(e) {
         },
         success: function(response) {
             let updated_data_source = JSON.parse(decodeURIComponent(response));
-            console.log(updated_data_source);
             if (updated_data_source.length === 0) {
                 current_page.value--;
                 page_display.innerText = current_page.value;
@@ -97,6 +99,7 @@ $("#next_button").click(function(e) {
             }
 
             displayList(updated_data_source, data_container, rows_per_page, cardCount);
+            data_source = JSON.parse(decodeURIComponent(response));
         }
     });
 });
@@ -122,8 +125,8 @@ $("#previous_button").click(function(e) {
         },
         success: function(response) {
             let updated_data_source = JSON.parse(decodeURIComponent(response));
-            console.log(updated_data_source);
             displayList(updated_data_source, data_container, rows_per_page, cardCount);
+            data_source = JSON.parse(decodeURIComponent(response));
         }
     });
 

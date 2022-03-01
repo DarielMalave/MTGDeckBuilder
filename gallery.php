@@ -1,5 +1,23 @@
 <?php require_once('templates/header.php'); ?>
 
+<div id="card_modal" class="modal">
+    <div class="modal-content">
+
+        <div id="modal_title">
+            <p id="modal_text"></p>
+            <span id="close">&times;</span>
+        </div>
+
+        <div id="modal_body">
+            <!-- <img id="modal_image">
+            <p id="modal_flavor"></p> -->
+        </div>
+
+    </div>
+</div>
+
+
+
 <div id="display_search_info">
     <h1> Welcome to the Gallery! </h1>
     <h2 id="display_filters"></h2>
@@ -34,6 +52,9 @@
             <button id="set_filter" value="cmc=5" onclick="toggle_filter(this.value)">5</button>
             <button id="set_filter" value="cmc=6" onclick="toggle_filter(this.value)">6</button>
             <button id="set_filter" value="cmc=7" onclick="toggle_filter(this.value)">7</button>
+            <button id="set_filter" value="cmc=8" onclick="toggle_filter(this.value)">8</button>
+            <button id="set_filter" value="cmc=9" onclick="toggle_filter(this.value)">9</button>
+            <!-- add 12 CMC filter? -->
         </div>
     </div>
 
@@ -91,5 +112,52 @@
 
 <input id="current_page_counter" type="hidden" value="1">
 <input id="number_of_pages_counter" type="hidden" value="1">
+
+
+<script>
+let modal = document.getElementById("card_modal");
+let btn = document.getElementById("myBtn");
+let span = document.getElementById("close");
+
+function modal_config(index) {
+    console.log(index);
+    console.log(data_source[index]);
+
+    let modal_text = document.getElementById("modal_text");
+    let modal_body = document.getElementById("modal_body");
+    modal_body.innerHTML = "";
+
+    let modal_image = document.createElement("img");
+    let modal_text_body = document.createElement("ul");
+    let modal_flavor = document.createElement("li");
+    let modal_cmc = document.createElement("li");
+    let modal_rarity = document.createElement("li");
+
+    modal_text.innerText = data_source[index]['name'] + " (" + data_source[index]['card_set'] + ")";
+
+    modal_image.src = data_source[index]['imageUrl'];
+
+    modal_flavor.innerText = data_source[index]['text'];
+    modal_cmc.innerText = "Converted Mana Cost: " + data_source[index]['cmc'];
+    modal_rarity.innerText = "Card Rarity: " + data_source[index]['rarity'];
+
+    modal_text_body.appendChild(modal_cmc);
+    modal_text_body.appendChild(modal_rarity);
+    modal_text_body.appendChild(modal_flavor);
+    modal_body.appendChild(modal_image);
+    modal_body.appendChild(modal_text_body);
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 <?php require_once('templates/footer.php'); ?>
