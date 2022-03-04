@@ -16,8 +16,6 @@
     </div>
 </div>
 
-
-
 <div id="display_search_info">
     <h1> Welcome to the Gallery! </h1>
     <h2 id="display_filters"></h2>
@@ -68,8 +66,6 @@
             <button id="set_filter" value="manaCost={B}" onclick="toggle_filter(this.value)">Black</button>
         </div>
     </div>
-
-    <!-- instant, creature, artifact, enchantment, planeswalker, land, saga?, dungeon? -->
 
     <div class="dropdown">
         <button class="dropbtn">Type</button>
@@ -129,21 +125,28 @@ function modal_config(index) {
 
     let modal_image = document.createElement("img");
     let modal_text_body = document.createElement("ul");
-    let modal_flavor = document.createElement("li");
+    let modal_description = document.createElement("li");
     let modal_cmc = document.createElement("li");
     let modal_rarity = document.createElement("li");
+    let modal_flavor = document.createElement("li");
+    let modal_button = document.createElement("button");
 
     modal_text.innerText = data_source[index]['name'] + " (" + data_source[index]['card_set'] + ")";
 
     modal_image.src = data_source[index]['imageUrl'];
 
-    modal_flavor.innerText = data_source[index]['text'];
-    modal_cmc.innerText = "Converted Mana Cost: " + data_source[index]['cmc'];
-    modal_rarity.innerText = "Card Rarity: " + data_source[index]['rarity'];
+    modal_cmc.innerHTML = "<span>Converted Mana Cost:</span> " + data_source[index]['cmc'];
+    modal_rarity.innerHTML = "<span>Card Rarity:</span> " + data_source[index]['rarity'];
+    modal_description.innerText = data_source[index]['text'];
+    modal_flavor.innerHTML = (data_source[index]['flavor']) ? "<span>Card Flavor Text:</span><i> " + data_source[index]['flavor'] + "</i>" : "<span>No Flavor Text</span>";
+    modal_button.innerText = "Add to Deck";
+    modal_button.classList.add("dropbtn");
 
     modal_text_body.appendChild(modal_cmc);
     modal_text_body.appendChild(modal_rarity);
+    modal_text_body.appendChild(modal_description);
     modal_text_body.appendChild(modal_flavor);
+    modal_text_body.appendChild(modal_button);
     modal_body.appendChild(modal_image);
     modal_body.appendChild(modal_text_body);
     modal.style.display = "block";

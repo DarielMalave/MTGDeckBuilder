@@ -141,9 +141,9 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
   width: 60%;
 }
 
-.modal-content ul {
+/* .modal-content ul {
   list-style: circle;
-}
+} */
 
 #modal_title {
   display: flex;
@@ -152,6 +152,22 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+
+#modal_body {
+  display: flex;
+}
+
+#modal_body ul {
+  padding: 1.5rem;
+}
+
+#modal_body li {
+  margin-bottom: 0.5rem;
+}
+
+#modal_body ul span {
+  font-weight: bold;
 }
 
 /* The Close Button */
