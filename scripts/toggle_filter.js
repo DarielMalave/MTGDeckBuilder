@@ -25,10 +25,13 @@ function toggle_filter(filter) {
     // if filter does exist in string_url, remove filter from URL
     if (string_url.indexOf(filter) > -1) {
         updated_string_url = string_url.replace(filter, "");
+        //document.getElementsByName(filter)[0].classList.remove("active-button");
     }
     // otherwise, filter does not exist in string_url
     else {
         updated_string_url = string_url.concat("&" + filter);
+        //document.getElementsByName(filter)[0].classList.add("active-button");
+        //document.getElementsByName(filter)[0].setAttribute("class", "active-button");
     }
 
     // in case if after removal and & is the last character, remove the last &

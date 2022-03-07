@@ -23,7 +23,7 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
 */
 
 .dropbtn {
-  background-color: #e03c44;
+  background-color: #e2535a;
   color: black;
   padding: 0.5rem;
   font-size: 1rem;
@@ -53,11 +53,15 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
   padding: 5px;
   font-size: 1rem;
   text-decoration: none;
-  background: none;
+  /* background: none; */
   border: none;
   width: 100%;
   text-align: left;
   display: block;
+}
+
+.active-button {
+  background-color:rgba(206, 252, 1, 0.884);
 }
 
 .dropdown-content button:hover {
@@ -116,6 +120,7 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
 }
 
 /* ================== Playing with modals ================= */
+/* https://www.w3schools.com/howto/howto_css_modals.asp */
 
 .modal {
   display: none; /* Hidden by default */
@@ -141,10 +146,6 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
   width: 60%;
 }
 
-/* .modal-content ul {
-  list-style: circle;
-} */
-
 #modal_title {
   display: flex;
   align-items: center;
@@ -168,6 +169,18 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
 
 #modal_body ul span {
   font-weight: bold;
+}
+
+.modal_button {
+  background-color: #37c232;
+  color: black;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  border: 3px solid black;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: box-shadow 0.25s, transform 0.25s;
 }
 
 /* The Close Button */
