@@ -9,8 +9,6 @@
         </div>
 
         <div id="modal_body">
-            <!-- <img id="modal_image">
-            <p id="modal_flavor"></p> -->
         </div>
 
     </div>
@@ -111,6 +109,13 @@
 
 
 <script>
+function lazy_loading(image) {
+    if (image.complete) {
+        console.log("image loaded successfully");
+        image.classList.remove('lazy_load');
+        image.classList.add('fade_in');
+    }
+}
 
 // apply all active filter buttons (i.e. filters applied in URL)
 let string_url = window.location.href;
