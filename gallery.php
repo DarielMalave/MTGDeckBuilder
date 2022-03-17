@@ -100,9 +100,10 @@
 
 <section id="pagination_bar">
     <button id="previous_button">Previous Page</button>
-    <button id="current_page_display">1</button>
+    <button id="current_page_display">Page 1</button>
     <button id="next_button">Next Page</button>
 </section>
+
 
 <input id="current_page_counter" type="hidden" value="1">
 <input id="number_of_pages_counter" type="hidden" value="1">

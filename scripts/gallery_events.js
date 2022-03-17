@@ -76,7 +76,7 @@ $.ajax({
 // search query
 $("#next_button").click(function(e) {
     current_page.value++;
-    page_display.innerText = current_page.value;
+    page_display.innerText = "Page " + current_page.value;
 
     let current_page_count = parseInt(document.getElementById('current_page_counter').value);
     let cardCount = (current_page_count - 1) * rows_per_page;
@@ -110,7 +110,7 @@ $("#previous_button").click(function(e) {
     }
 
     current_page.value--;
-    page_display.innerText = current_page.value;
+    page_display.innerText = "Page " + current_page.value;
 
     let current_page_count = parseInt(document.getElementById('current_page_counter').value);
     let cardCount = (current_page_count - 1) * rows_per_page;
