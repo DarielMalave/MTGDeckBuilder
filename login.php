@@ -1,5 +1,11 @@
 <?php require_once('templates/login_header.php'); ?>
 
+<?php
+    if (isset($_GET['register'])) {
+        echo "<p>Registration successful!";
+    }
+?>
+
 <section id="container">
     <form method="POST" action="register.php">
         <div id="register_container">
