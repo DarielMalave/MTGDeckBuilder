@@ -1,10 +1,10 @@
 /* re-used styles from gallery_styles */
-/* #card_container {
+#card_container {
     width: 90%;
     margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
 }
 
 #card_container > * {
@@ -12,4 +12,19 @@
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 0.5em;
-} */
+}
+
+.title_con {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
