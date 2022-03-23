@@ -20,9 +20,9 @@
     <!-- <script src="scripts/script.js"></script> -->
     <!-- jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/toggle_filter.js" defer></script>
+    <!-- <script src="scripts/toggle_filter.js" defer></script>
     <script src="scripts/displayList.js" defer></script>
-    <script src="scripts/gallery_events.js" defer></script>
+    <script src="scripts/gallery_events.js" defer></script> -->
 </head>
 
 <body>

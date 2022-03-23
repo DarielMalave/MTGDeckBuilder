@@ -2,22 +2,26 @@
 
 <?php
     if (isset($_GET['register'])) {
-        echo "<p>Registration successful!";
+        echo "<p>Registration successful!</p>";
+    }
+
+    if (isset($_GET['login'])) {
+        echo "<p>Login successful!</p>";
     }
 ?>
 
 <section id="container">
-    <form method="POST" action="register.php">
+    <form method="POST" action="login_process.php">
         <div id="register_container">
             <h2>Log In</h2>
             <hr>
             <div>
                 <label for="username">Enter username:</label>
-                <input type="text" name="username">
+                <input type="text" name="username" required>
             </div>
             <div>
                 <label for="password">Enter password:</label>
-                <input type="password" name="password">
+                <input type="password" name="password" required>
             </div>
             <div>
                 <button type="submit">Log In!</button>
@@ -25,24 +29,24 @@
         </div>
     </form>
 
-    <form method="POST" action="register.php">
+    <form method="POST" action="register_process.php">
         <div id="register_container">
             <h2>Register</h2>
             <hr>
             <div>
                 <label for="username">Enter username:</label>
-                <input type="text" name="username">
+                <input type="text" name="username" required>
             </div>
             <div>
                 <label for="password">Enter password:</label>
-                <input type="password" name="password">
+                <input type="password" name="password" required>
             </div>
             <div>
                 <label for="reenter">Re-enter password:</label>
-                <input type="password" name="reenter">
+                <input type="password" name="reenter" required>
             </div>
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit">Register!</button>
             </div>
         </div>
     </form>
