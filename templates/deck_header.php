@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +21,8 @@
     <!-- SCRIPTS -->
     <script src="scripts/format_deck.js" defer></script>
     <script src="scripts/deck_events.js" defer></script>
-    
+    <script src="scripts/lazy_loading.js" defer></script>
+    <script src="scripts/modal_deck.js" defer></script>
 </head>
 
 <body>

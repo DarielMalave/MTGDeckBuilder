@@ -1,7 +1,17 @@
-<?php require_once('templates/deck_header.php'); ?>
+<?php 
+    require_once('templates/deck_header.php');
+    require_once('templates/modal_template.php');
+?>
+
+<?php
+    if (!isset($_COOKIE['deck'])) {
+        setcookie("deck", ",13,54,11,23,90,21,155,192,500,789", time() + 3600, '/');
+        header("location: deck.php");
+    }
+?>
 
 <div class="title_con">
-    <h1>Standard Deck (DEMO)</h1>
+    <h1>Standard Deck</h1>
 </div>
 
 <div class="title_con">
@@ -15,24 +25,27 @@
                     <br>
                     <li>Up to fifteen cards may be included in your sideboard, if you use one.</li>
                     <br>
-                    <li>Include no more than four copies of any individual card in your main deck and sideboard combined (except basic lands).</li>
+                    <li>Include no more than four copies of any individual card in your main deck and sideboard combined
+                        (except basic lands).</li>
                     <br>
-                    <li>There's no maximum deck size, as long as you can shuffle your deck in your hands unassisted.</li>
+                    <li>There's no maximum deck size, as long as you can shuffle your deck in your hands unassisted.
+                    </li>
                 </ul>
                 <br>
-                <a href="https://magic.wizards.com/en/formats/standard" target="_blank">https://magic.wizards.com/en/formats/standard</a>
+                <a href="https://magic.wizards.com/en/formats/standard"
+                    target="_blank">https://magic.wizards.com/en/formats/standard</a>
             </div>
         </div>
     </div>
 </div>
 
-<div class="title_con">
+<!-- <div class="title_con">
     <h2>Number of Cards</h2>
 </div>
 
 <div class="title_con">
     <h2>Average CMC</h2>
-</div>
+</div> -->
 
 <div class="title_con">
     <h2>Creature</h2>
@@ -171,9 +184,24 @@
 <section id="card_container" class="land"></section>
 
 <script>
-<?php 
-    echo "let deck_string = '" . $_SESSION['deck'] . "';";
+<?php
+    echo "let deck_string = '" . $_COOKIE['deck'] . "';";
 ?>
+
+function remove_from_deck(id) {
+    $.ajax({
+        type: "POST",
+        url: "handle_delete.php",
+        data: {
+            card_id: id
+        },
+        success: function(response) {
+            //console.log(response);
+            alert("Card successfully removed!");
+            window.location.assign('http://localhost/PokemonCompendium/deck.php');
+        }
+    });
+}
 
 function displayList(data_source, wrapper, rows_per_page) {
     wrapper.innerHTML = "";
@@ -187,6 +215,10 @@ function displayList(data_source, wrapper, rows_per_page) {
         let card_image = document.createElement('img');
 
         card_image.src = data_source[i]['imageUrl'];
+        card_image.classList.add('lazy_load');
+        card_image.setAttribute("index", i);
+        card_image.setAttribute("onclick", "modal_config(" + i + ")");
+        card_image.setAttribute("onload", "lazy_loading(this)");
 
         card_element.appendChild(card_image);
         wrapper.appendChild(card_element);
