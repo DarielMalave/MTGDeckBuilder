@@ -1,5 +1,9 @@
 <?php require_once('templates/header.php'); ?>
 
+<?php
+    $_SESSION['test2'] = "hi";
+?>
+
 <div id="card_modal" class="modal">
     <div class="modal-content">
 
@@ -27,7 +31,8 @@
         <div class="dropdown-content">
             <!-- not a fan of mixing JavaScript inside of HTML, but this is the easiest way 
             to get individual value of these filter buttons that have the same id -->
-            <button name="filter" value="card_set=vow" name="card_set=vow" onclick="toggle_filter(this.value)">Crimson Vow</button>
+            <button name="filter" value="card_set=vow" name="card_set=vow" onclick="toggle_filter(this.value)">Crimson
+                Vow</button>
             <button name="filter" value="card_set=mid" onclick="toggle_filter(this.value)">Midnight Hunt</button>
             <button name="filter" value="card_set=afr" onclick="toggle_filter(this.value)">Adventures in the Forgotten
                 Realms</button>
@@ -110,9 +115,24 @@
 
 
 <script>
+function add_to_deck(id) {
+    $.ajax({
+        type: "POST",
+        url: "handle_session.php",
+        data: {
+            card_id: id
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
+
+
+
+
 function lazy_loading(image) {
     if (image.complete) {
-        console.log("image loaded successfully");
         image.classList.remove('lazy_load');
         image.classList.add('fade_in');
     }
@@ -131,9 +151,6 @@ let btn = document.getElementById("myBtn");
 let span = document.getElementById("close");
 
 function modal_config(index) {
-    console.log(index);
-    console.log(data_source[index]);
-
     let modal_text = document.getElementById("modal_text");
     let modal_body = document.getElementById("modal_body");
     modal_body.innerHTML = "";
@@ -153,8 +170,10 @@ function modal_config(index) {
     modal_cmc.innerHTML = "<span>Converted Mana Cost:</span> " + data_source[index]['cmc'];
     modal_rarity.innerHTML = "<span>Card Rarity:</span> " + data_source[index]['rarity'];
     modal_description.innerText = data_source[index]['text'];
-    modal_flavor.innerHTML = (data_source[index]['flavor']) ? "<i>" + data_source[index]['flavor'] + "</i>" : "<span>No Flavor Text</span>";
+    modal_flavor.innerHTML = (data_source[index]['flavor']) ? "<i>" + data_source[index]['flavor'] + "</i>" :
+        "<span>No Flavor Text</span>";
     modal_button.innerText = "Add to Deck";
+    modal_button.setAttribute("onclick", "add_to_deck( + " + data_source[index]['auto_id'] + ")")
     modal_button.classList.add("modal_button");
 
     modal_text_body.appendChild(modal_cmc);

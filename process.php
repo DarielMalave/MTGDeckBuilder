@@ -2,6 +2,8 @@
 include ("setup_db.php");
 include ("process/structure_query.php");
 
+// close database
+// use prepared statements
 $mysqli = db_iconnect("mtg");
 $all_cards = array();
 $string_url = $_POST['string_url'];

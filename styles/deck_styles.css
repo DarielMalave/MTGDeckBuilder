@@ -14,6 +14,16 @@
     margin-bottom: 0.5em;
 }
 
+#card_container img {
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  
+#card_container img:hover {
+    box-shadow: 8px 8px 5px #888888;
+    transform: translateY(-0.3em);
+    cursor: pointer;
+}
+
 .title_con {
     width: 90%;
     margin: 1rem auto;

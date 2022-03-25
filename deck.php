@@ -1,8 +1,42 @@
 <?php require_once('templates/deck_header.php'); ?>
 
-<!-- creature, instant, artifact, enchantment, sorcery, planeswalker, land -->
+<?php 
+    echo $_SESSION['deck'];
+?>
+
+
 <div class="title_con">
-    <h1>Standard Deck</h1>
+    <h1>Standard Deck (DEMO)</h1>
+</div>
+
+<div class="title_con">
+    <h2>Standard Rules</h2>
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                <ul>
+                    <li>Your deck must be at least 60 cards.</li>
+                    <br>
+                    <li>Up to fifteen cards may be included in your sideboard, if you use one.</li>
+                    <br>
+                    <li>Include no more than four copies of any individual card in your main deck and sideboard combined (except basic lands).</li>
+                    <br>
+                    <li>There's no maximum deck size, as long as you can shuffle your deck in your hands unassisted.</li>
+                </ul>
+                <br>
+                <a href="https://magic.wizards.com/en/formats/standard" target="_blank">https://magic.wizards.com/en/formats/standard</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title_con">
+    <h2>Number of Cards</h2>
+</div>
+
+<div class="title_con">
+    <h2>Average CMC</h2>
 </div>
 
 <div class="title_con">
@@ -30,37 +64,114 @@
 
 <div class="title_con">
     <h2>Instant</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                Instants, like sorceries, represent one-shot or short-term magical spells.
+                They are never put onto the battlefield; instead, they take effect when their
+                mana cost is paid and the spell resolves, and then are immediately put into
+                the player's graveyard.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Instant" target="_blank">https://mtg.fandom.com/wiki/Instant</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="instant"></section>
 
 <div class="title_con">
     <h2>Artifact</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                Artifacts are permanents that represent magical items,
+                animated constructs, pieces of equipment, or other objects
+                and devices. Artifact, the card type, is broader than the normal
+                definition. Natural items can be a Magic “artifact”.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Artifact" target="_blank">https://mtg.fandom.com/wiki/Artifact</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="artifact"></section>
 
 <div class="title_con">
     <h2>Enchantment</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                Enchantments represent persistent magical effects,
+                usually remaining in play indefinitely.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Enchantment"
+                    target="_blank">https://mtg.fandom.com/wiki/Enchantment</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="enchantment"></section>
 
 <div class="title_con">
     <h2>Sorcery</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                Sorceries, like instants, represent one-shot or short-term magical spells.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Sorcery" target="_blank">https://mtg.fandom.com/wiki/Sorcery</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="sorcery"></section>
 
 <div class="title_con">
     <h2>Planeswalker</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                In the storyline of Magic: The Gathering,
+                planeswalkers are among the most powerful beings in the multiverse.
+                Within the game, they represent the thematic identities of the players.
+                Planeswalker is also a card type within the game.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Planeswalker"
+                    target="_blank">https://mtg.fandom.com/wiki/Planeswalker</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="planeswalker"></section>
 
 <div class="title_con">
     <h2>Land</h2>
-    <img src="images/circle-question-solid.svg" class="icon">
+    <div class="dropdown">
+        <img src="images/circle-question-solid.svg" class="icon">
+        <div class="dropdown-content">
+            <div class="info_text">
+                Lands represent locations under the player's control,
+                most of which have mana abilities. Because mana is needed to use
+                almost any card or ability, most decks need a high number of mana-producing
+                lands (typically between 33-50% of the total deck) in order to function effectively.
+                The most commonly printed Magic cards are the five basic lands, one for each color,
+                each of which intrinsically produce one mana of a specific color.
+                <br>
+                <br>
+                <a href="https://mtg.fandom.com/wiki/Land" target="_blank">https://mtg.fandom.com/wiki/Land</a>
+            </div>
+        </div>
+    </div>
 </div>
 <section id="card_container" class="land"></section>
 
@@ -74,11 +185,6 @@ let enchantment_cards = [];
 let sorcery_cards = [];
 let planeswalker_cards = [];
 let land_cards = [];
-
-let text = "Super Artifact Enchantment Creature - Human Soldier";
-const myArray = text.split("-");
-const newArray = myArray[0].split(" ");
-const trueType = newArray[newArray.length - 2];
 
 $.ajax({
     type: "POST",
@@ -95,24 +201,8 @@ $.ajax({
 });
 
 // also have function to sort cards by alphabetical order in each category
-// account for double-sided cards too
 function format_deck(data_source) {
     for (let i = 0; i < data_source.length; i++) {
-        // clean card type name function here to take care of 
-        // "artifact creature" and "enchantment creature"
-        // it works by taking the last card type
-
-        // if (data_source[i].type.includes("-")) {
-        //     const myArray = data_source[i].type.split("-");
-        //     const newArray = myArray[0].split(" ");
-        //     const arrayLength = newArray.length - 2;
-        //     true_data_type = newArray[arrayLength];
-        // } else {
-        //     const newArray = data_source[i].type.split(" ");
-        //     const arrayLength = newArray.length - 1;
-        //     true_data_type = newArray[arrayLength];
-        // }
-
         // https://www.w3schools.com/jsref/jsref_split.asp
         let text = data_source[i].type;
         let true_data_type;

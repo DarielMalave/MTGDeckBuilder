@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php
+    session_start();
+    $_SESSION['test'] = "hi";
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
