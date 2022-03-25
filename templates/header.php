@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTG Deck Builder</title>
     <!-- Stylesheet referencing my custom styling -->
+    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/gallery_styles.css">
     <!-- Set up necessary to access Google Fonts -->
@@ -32,12 +33,12 @@
     <div class="container">
         <!-- Navigation bar markup -->
         <nav id="navbar">
-            <div><button class="logo"><i class="fas fa-book"></i> MTG Deck Builder</button></div>
-            <div><button class="nav_button">Card Data <i class="fas fa-arrow-circle-down"></i></button></div>
-            <div><button class="nav_button"><i class="fas fa-search"></i> Search cards...</button></div>
+        <div><a href="./"><button class="logo"><i class="fas fa-book"></i> MTG Deck Builder</button></a></div>
+            <!-- <div><button class="nav_button">Card Data <i class="fas fa-arrow-circle-down"></i></button></div>
+            <div><button class="nav_button"><i class="fas fa-search"></i> Search cards...</button></div> -->
             <div>
-                <button class="nav_button">Sign Up</button>
-                <button class="nav_button">Log In</button>
+                <a href="gallery.php"><button class="nav_button gallery">View Gallery</i></button></a>
+                <a href="deck.php"><button class="nav_button demo">Demo (Build Deck)</button></a>
             </div>
         </nav>
     </div>

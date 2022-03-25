@@ -1,4 +1,4 @@
-function displayList(data_source, wrapper, rows_per_page, page) {
+function displayList(data_source, wrapper, rows_per_page) {
     wrapper.innerHTML = "";
 
     if (data_source.length === 0) {
