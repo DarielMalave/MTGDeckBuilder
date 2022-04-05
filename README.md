@@ -4,3 +4,5 @@ The original version of MTG Deck Builder using HTML, CSS, vanilla JavaScript (+ 
 I started off this project using vanilla JavaScript, but eventually after weeks of work I find myself getting disorganized and confusing with my file structure.
 I eventually picked up React and decided to rebuild this app on React to practice front-end development and I'm glad I made the transition. Full, final version
 of MTGDeckBuilder is located at my MTGDeckBuilderReact repository.
+
+NOTE: This repository contains a good portion of my commit history of this project.
